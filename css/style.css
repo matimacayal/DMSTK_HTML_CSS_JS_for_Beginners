@@ -2,21 +2,19 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     --border-radius: 100px;
     --blue: #1c47ff;
     --pink: #d6a3fb;
     --green: #d0ff94;
-    --grey: #e5e5e5;
-    --gutter: 3.125vw;
+    --gray: #e5e5e5;
 
     margin: 0;
     padding: 0;
     background: #000000;
     color: #ffffff;
-    font-size: 20px;
-    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -31,14 +29,14 @@ h2 {
 
 a {
     color: #ffffff;
-    text-decoration: none;
+    text-decoration: none; /* Removes underline of an anchor */
 }
 
 section {
     position: relative;
     display: flex;
     width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 100px); /* vh: 100% height of viewport */
     top: 100px;
     z-index: 2;
 }
@@ -50,15 +48,15 @@ section.sticky {
 
 section.full-screen {
     height: 100vh;
-    top: 0;
     margin-top: 0;
+    top: 0;
     z-index: 3;
 }
 
 /* navigation */
 
 nav {
-    position: fixed;
+    position: fixed; /* fixed on screen and relative to the viewport, instead of static */
     width: 100%;
     height: 100px;
     top: 0;
@@ -68,8 +66,9 @@ nav {
 }
 
 nav ul {
-    display: flex;
-    align-items: center;
+    display: flex; /* makes it a flex container, default row direction */
+    /* it's direct children are flex item and will fill the free space available */
+    align-items: center; /* alligns items to the main flex axis (row by default) */
     width: 100%;
     height: 100%;
     margin: 0;
@@ -77,7 +76,7 @@ nav ul {
 }
 
 nav ul li {
-    list-style: none;
+    list-style: none; /* removes the dots of lists */
     margin-left: 45px;
 }
 
@@ -90,7 +89,7 @@ nav ul li a {
 
 section.about .empty {
     flex-basis: 37.5vw;
-    background: var(--grey);
+    background: var(--gray);
     border-radius: var(--border-radius);
 }
 
@@ -101,21 +100,21 @@ section.about article {
 }
 
 section.about article .title {
-    flex: 2;
+    flex: 2; /* title to grow twice as much as description when extra space available */
     display: flex;
     align-items: flex-end;
     background: var(--blue);
     border-radius: var(--border-radius);
-    padding: var(--gutter);
+    padding: 6.25vw;
 }
 
 section.about article .description {
     flex: 1;
     display: flex;
     align-items: center;
-    background: var(--pink);
+    background: #d6a3fb;
     border-radius: var(--border-radius);
-    padding: var(--gutter);
+    padding: 6.25vw;
     color: #000000;
 }
 
@@ -146,31 +145,12 @@ section.service .text {
     justify-content: center;
     flex: 1;
     background: #1f1a1c;
-    padding: var(--gutter);
+    padding: 6.25vw;
     border-radius: var(--border-radius);
 }
 
 section.service .text a {
     font-family: 'Space Mono', monospace;
-}
-
-/* service section animations */
-
-section.service.service-html figure img {
-    animation-name: float;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: cubic-bezier(.77,.28,.42,.93);
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(20px);
-    }
 }
 
 /* service section overrides */
@@ -207,62 +187,12 @@ section.service.service-js .text a {
 section.contact {
     align-items: center;
     justify-content: center;
-    background: linear-gradient(var(--blue), var(--green) 60%, var(--pink) 70%, var(--grey));
+    background: linear-gradient(var(--blue), var(--green) 60%, var(--pink) 70%, var(--gray));
     border-radius: var(--border-radius);
-    mix-blend-mode: difference;
 }
 
 section.contact a {
     font-size: 100px;
     color: #000000;
-    font-weight: bold;
-    transition: filter 2s cubic-bezier(.77,.28,.42,.93);
-    will-change: filter;
 }
-
-section.contact a:hover {
-    filter: blur(20px);
-}
-/* responsive */
-
-@media only screen and (max-width: 768px) {
-    html, body {
-        --border-radius: 50px;
-        --gutter: 6.25vw;
-    }
-
-    h1 {
-        font-size: 60px;
-    }
-
-    h1 {
-        font-size: 40px;
-    }
-
-    nav ul li {
-        margin-left: 25px;
-    }
-
-    section.service article {
-        flex-direction: column;
-    }
-
-    section.service figure {
-        flex-basis: 25vh;
-    }
-
-    section.service figure img {
-        width: 20%;
-    }
-
-    section.contact a {
-        font-size: 50px;
-        transform: rotate(90deg);
-    }
-
-}
-
-
-
-
 
